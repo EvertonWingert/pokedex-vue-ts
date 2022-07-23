@@ -20,7 +20,7 @@ Nesse desafio, foi desenvolvido uma pokedex
 
 ### 📸 Imagens
 
-**Lista Preenchida**
+**Pokemon selecionado**
 <img src=".github/pokedex.png" alt="Pokemon" />
 
 ## 🚀 Tecnologias
