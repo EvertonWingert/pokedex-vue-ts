@@ -1,21 +1,24 @@
 <script setup lang="ts">
-	import { onMounted, ref } from "vue";
+  import {onMounted, reactive} from "vue";
 	import FormPokedex from "../components/FormPokedex.vue";
 	import PaginationPokedex from "../components/PaginationPokedex.vue";
-
+  import PokemonItem from "../components/PokemonItem.vue";
 	import { fetchPokemon } from "../service/poke-api";
-	import PokemonItem from "../components/PokemonItem.vue";
 	import { PokemonEntity } from "../entity/Pokemon";
 
-	const pokemon = ref<PokemonEntity | null>(null);
+	const pokemon = reactive<PokemonEntity>({
+      name: "",
+      id: 0,
+      image: ''
+  });
+
 
 	const searchPokemon = async (nameOrNumber: string | number) => {
 		const response = await fetchPokemon(nameOrNumber);
-		pokemon.value = {
-			name: response.name,
-			id: response.id,
-			image: response["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"],
-		};
+    pokemon.id = response.id;
+    pokemon.name = response.name;
+    pokemon.image = response["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"]
+
 	};
 
 	onMounted(() => {

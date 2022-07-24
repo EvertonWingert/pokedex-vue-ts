@@ -2,14 +2,14 @@
 	import { PokemonEntity } from "../entity/Pokemon";
 
 	interface PokemonItemProps {
-		pokemon: PokemonEntity | null;
+		pokemon: PokemonEntity;
 	}
 
 	defineProps<PokemonItemProps>();
 </script>
 
 <template>
-	<div v-if="pokemon">
+	<div v-if="pokemon.id">
 		<img :src="pokemon.image" :alt="`Image do pokemon ${pokemon.name}`" class="pokemon-image" />
 		<h1 class="pokemon-data">
 			<span class="pokemon-number">
